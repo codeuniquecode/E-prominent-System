@@ -1,0 +1,31 @@
+{
+  "name": "e-prominent-system",
+  "version": "1.0.0",
+  "description": "The **E-Prominent System** is a web-based e-Governance project designed to simplify the government job vacancy process. It provides a digital platform where administrators (government officials) can post vacancies, and citizens can register, apply online, and track their application status. The system ensures transparency, efficiency, and quick communication through email notifications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeuniquecode/E-prominent-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeuniquecode/E-prominent-System/issues"
+  },
+  "homepage": "https://github.com/codeuniquecode/E-prominent-System#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "mongoose": "^8.18.0",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.5",
+    "socket.io": "^4.8.1"
+  }
+}
