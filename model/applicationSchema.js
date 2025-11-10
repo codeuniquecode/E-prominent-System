@@ -1,8 +1,27 @@
 const mongoose = require('mongoose');
-const moment = require('moment');
-const applicationSchema = mongoose.Schema({
-    
-});
 
-const application = mongoose.model("Application",applicationSchema);
-module.exports = application;
+const applicationSchema = new mongoose.Schema({
+    applicant: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    vacancy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Vacancy',
+        required: true
+    },
+    // Store the path to the uploaded resume
+    resume: {
+        type: String, 
+        required: true
+    },
+    status: {
+        type: String,
+        enum: ['Pending', 'Approved', 'Rejected'],
+        default: 'Pending'
+    }
+}, { timestamps: true });
+
+const Application = mongoose.model('Application', applicationSchema);
+module.exports = Application;

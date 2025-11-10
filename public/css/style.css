@@ -1,0 +1,28 @@
+/* Make text in <textarea> and <pre> wrap correctly */
+textarea, p[style*="white-space: pre-wrap;"] {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Ensure forms in tables don't cause extra spacing */
+form.d-inline {
+    margin: 0;
+    padding: 0;
+}
+
+/* Sticky footer setup */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+/* Card hover effect (optional) */
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    transition: box-shadow 0.2s ease-in-out;
+}

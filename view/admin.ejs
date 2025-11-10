@@ -1,0 +1,78 @@
+<%- include('partials/header') %>
+
+<h1 class="mb-4">Admin Dashboard</h1>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary shadow h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-people-fill fs-1"></i>
+                <h3 class="card-title"><%= stats.users %></h3>
+                <p class="card-text">Total Users</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success shadow h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-briefcase-fill fs-1"></i>
+                <h3 class="card-title"><%= stats.vacancies %></h3>
+                <p class="card-text">Total Vacancies</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info shadow h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-file-earmark-text-fill fs-1"></i>
+                <h3 class="card-title"><%= stats.notices %></h3>
+                <p class="card-text">Total Notices</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning shadow h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-clock-history fs-1"></i>
+                <h3 class="card-title"><%= stats.pending %></h3>
+                <p class="card-text">Pending Applications</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center p-4">
+                <i class="bi bi-briefcase-fill fs-1 text-success"></i>
+                <h4 class="card-title mt-2">Manage Vacancies</h4>
+                <p>Create, view, and manage job vacancies.</p>
+                <a href="/admin/vacancy/new" class="btn btn-success">Post New Vacancy</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center p-4">
+                <i class="bi bi-file-earmark-text-fill fs-1 text-info"></i>
+                <h4 class="card-title mt-2">Manage Notices</h4>
+                <p>Create and publish public notices and tenders.</p>
+                <a href="/admin/notice/new" class="btn btn-info">Post New Notice</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-body text-center p-4">
+                <i class="bi bi-journal-check fs-1 text-primary"></i>
+                <h4 class="card-title mt-2">Review Applications</h4>
+                <p>Review, approve, or reject applications submitted by users.</p>
+                <a href="/admin/applications" class="btn btn-primary">View All Applications</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include('partials/footer') %>

@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0"><%= vacancy.title %></h2>
+            </div>
+            <div class="card-body p-4">
+                <h5 class="card-subtitle mb-2 text-muted"><%= vacancy.department %></h5>
+                <hr>
+                <p class="card-text" style="white-space: pre-wrap;"><%= vacancy.description %></p>
+                <hr>
+                <p><strong>Deadline:</strong> 
+                    <span class="text-danger fw-bold">
+                        <%= new Date(vacancy.deadline).toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' }) %>
+                    </span>
+                </p>
+            </div>
+            <div class="card-footer bg-light">
+                <h4 class="mb-3">Apply Now</h4>
+
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div class="alert alert-danger"><%= error %></div>
+                <% } %>
+
+                <% if (hasApplied) { %>
+                    <div class="alert alert-<%= appStatus === 'Approved' ? 'success' : (appStatus === 'Rejected' ? 'danger' : 'info') %>" role="alert">
+                        You have already applied for this position.
+                        <br>
+                        <strong>Your application status is: <%= appStatus %></strong>
+                    </div>
+                <% } else if (new Date(vacancy.deadline) < new Date()) { %>
+                    <div class="alert alert-danger" role="alert">
+                        The deadline for this vacancy has passed. Applications are closed.
+                    </div>
+                <% } else { %>
+                    <form action="/apply/<%= vacancy._id %>" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="resume" class="form-label">Upload Resume (PDF Only)</label>
+                            <input class="form-control" type="file" id="resume" name="resume" accept="application/pdf" required>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg">Submit Application</button>
+                    </form>
+                <% } %>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

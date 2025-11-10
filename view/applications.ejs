@@ -1,0 +1,67 @@
+<%- include('partials/header') %>
+
+<h2 class="mb-4">Review Applications</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Applicant</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Vacancy</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Resume</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (applications.length > 0) { %>
+                        <% applications.forEach(app => { %>
+                            <tr>
+                                <td><%= app.applicant.name %></td>
+                                <td><%= app.applicant.email %></td>
+                                <td><%= app.vacancy.title %></td>
+                                <td>
+                                    <% if (app.status === 'Pending') { %>
+                                        <span class="badge bg-warning text-dark"><%= app.status %></span>
+                                    <% } else if (app.status === 'Approved') { %>
+                                        <span class="badge bg-success"><%= app.status %></span>
+                                    <% } else { %>
+                                        <span class="badge bg-danger"><%= app.status %></span>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <a href="/storage/<%= app.resume %>" target="_blank" class="btn btn-outline-primary btn-sm">
+    View PDF
+</a>
+                                </td>
+                                <td>
+                                    <% if (app.status === 'Pending') { %>
+                                        <div class="btn-group">
+                                            <form action="/admin/application/approve/<%= app._id %>" method="POST" class="d-inline">
+                                                <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                                            </form>
+                                            <form action="/admin/application/reject/<%= app._id %>" method="POST" class="d-inline ms-1">
+                                                <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                                            </form>
+                                        </div>
+                                    <% } else { %>
+                                        <span class="text-muted">Actioned</span>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="6" class="text-center">No applications found.</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+
+<h2 class="mb-4">Public Notices</h2>
+
+<div class="row g-4">
+    <% if (notices.length > 0) { %>
+        <% notices.forEach(notice => { %>
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0"><%= notice.title %></h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" style="white-space: pre-wrap;"><%= notice.content %></p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted on <%= new Date(notice.createdAt).toLocaleDateString() %>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                There are no public notices at this time.
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<%- include('partials/footer') %>
