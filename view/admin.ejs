@@ -2,6 +2,7 @@
 
 <h1 class="mb-4">Admin Dashboard</h1>
 
+<!-- Stats Cards -->
 <div class="row g-4 mb-4">
     <div class="col-md-3">
         <div class="card text-white bg-primary shadow h-100">
@@ -41,24 +42,31 @@
     </div>
 </div>
 
+<!-- Admin Actions (Updated) -->
 <div class="row g-4">
     <div class="col-md-6">
         <div class="card shadow-sm h-100">
-            <div class="card-body text-center p-4">
+            <div class="card-body text-center p-4 d-flex flex-column">
                 <i class="bi bi-briefcase-fill fs-1 text-success"></i>
                 <h4 class="card-title mt-2">Manage Vacancies</h4>
-                <p>Create, view, and manage job vacancies.</p>
-                <a href="/admin/vacancy/new" class="btn btn-success">Post New Vacancy</a>
+                <p>Create, view, edit, and delete job vacancies.</p>
+                <div class="mt-auto">
+                    <a href="/admin/manage/vacancies" class="btn btn-success me-2">View All</a>
+                    <a href="/admin/vacancy/new" class="btn btn-outline-success">Post New</a>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="card shadow-sm h-100">
-            <div class="card-body text-center p-4">
+            <div class="card-body text-center p-4 d-flex flex-column">
                 <i class="bi bi-file-earmark-text-fill fs-1 text-info"></i>
                 <h4 class="card-title mt-2">Manage Notices</h4>
-                <p>Create and publish public notices and tenders.</p>
-                <a href="/admin/notice/new" class="btn btn-info">Post New Notice</a>
+                <p>Create, publish, edit, and delete public notices.</p>
+                <div class="mt-auto">
+                    <a href="/admin/manage/notices" class="btn btn-info me-2">View All</a>
+                    <a href="/admin/notice/new" class="btn btn-outline-info">Post New</a>
+                </div>
             </div>
         </div>
     </div>

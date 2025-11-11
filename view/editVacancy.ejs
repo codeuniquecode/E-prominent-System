@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="text-center mb-4">Edit Vacancy</h2>
+
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <form action="/admin/vacancy/edit/<%= vacancy._id %>" method="POST">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Vacancy Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="<%= vacancy.title %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="department" class="form-label">Department</label>
+                        <input type="text" class="form-control" id="department" name="department" value="<%= vacancy.department %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="deadline" class="form-label">Application Deadline</label>
+                        <input type="datetime-local" class="form-control" id="deadline" name="deadline" 
+                               value="<%= vacancy.deadline.toISOString().slice(0, 16) %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Full Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="10" required><%= vacancy.description %></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Update Vacancy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

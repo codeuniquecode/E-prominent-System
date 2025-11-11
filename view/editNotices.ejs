@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="text-center mb-4">Edit Public Notice</h2>
+
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <form action="/admin/notice/edit/<%= notice._id %>" method="POST">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Notice Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="<%= notice.title %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Full Content</label>
+                        <textarea class="form-control" id="content" name="content" rows="12" required><%= notice.content %></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Update Notice</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
